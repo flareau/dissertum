@@ -1,0 +1,119 @@
+\documentclass[phd]{dissertum}
+\usepackage{lipsum}
+\usepackage[printonlyreused]{acronym}
+
+
+% Variables à modifier
+% ==========================================================
+\titre{Vers une théorie unifiée des sciences}
+\soustitre{Étude préliminaire}
+\auteur{Issey Tou}
+\date{Août}{2023}
+
+\faculte{Faculté des arts et des sciences}
+\departement{Département des sciences unifiées}
+\programme{unification des sciences, option omniscience}
+
+\president{Big Boss}
+\directrice{Méchante Bolle}
+\codirecteur{Moyen Génie}
+\examinatrice{Star Académique}
+\membre{Simple Quidam}
+% ==========================================================
+
+
+\begin{document}
+
+  % Page titre et identification du jury
+  \pagetitre
+  \pagejury
+
+  % Résumé et mots-clés en français et en anglais
+  \begin{resume}{unification, tout}
+    Nous cherchons à unifier toutes les sciences et démontrons que c'est compliqué.
+  \end{resume}
+
+  \begin{abstract}{unification, everything}
+    We try to unify all sciences and prove that it is complicated.
+  \end{abstract}
+
+  % Table des matières, liste des figures, liste des tableaux
+  \matieres
+
+  % Liste des sigles
+  \prechapter{Liste des sigles et abréviations}
+    \begin{acronym}
+      \acro{UdeM}{Université de Montréal}
+      \acro{FAS}{Faculté des arts et des sciences}
+      \acro{NPU}{N'est pas utilisé!}
+    \end{acronym}
+
+  % Dédicace (facultative)
+  \dedicace{À toutes les personnes qui aiment la science}
+
+  % Remerciements (chapitre facultatif)
+  \prechapter{Remerciements}
+    Merci.
+
+  % Avant-propos (chapitre facultatif)
+  \prechapter{Avant-propos}
+    \lipsum[1-2]
+
+  % Corps du document
+  % ==========================================================
+
+  \chapter{Introduction}
+    On parle de la \ac{FAS} de l'\ac{UdeM}.
+    \lipsum[3-6]
+
+  \chapter{Méthodologie, résultats et discussion}
+    \lipsum[7-8]\cite{knuth84}
+    \section{Méthodologie}
+      \lipsum[9-10]
+    \section{Résultats}
+      \lipsum[11-12]
+      \subsection{Expérience 1}
+        \lipsum[13]
+        \begin{figure}
+          \centering
+          \fbox{joli graphe}
+          \caption{Nombre d'articles publiés par domaine}
+        \end{figure}
+      \subsection{Expérience 2}
+        \lipsum[14]
+        \begin{figure}
+          \centering
+          \fbox{joli graphe}
+          \caption{Nombre d'articles publiés par année}
+        \end{figure}
+    \section{Discussion}
+      \lipsum[15-19]
+      \begin{table}
+        \centering
+        \begin{tabular}{ll}
+          \toprule
+          \bf Nom & \bf Citations \\
+          \midrule
+          Etal & 2\,340\,285 \\
+          Aparaître & 270\,859 \\ 
+          \bottomrule
+        \end{tabular}
+        \caption{Les personnes les plus citées}
+      \end{table}
+
+  \chapter{Conclusion}
+    On parle encore de la \ac{FAS}.
+    \lipsum[7-10]
+
+  % ==========================================================
+  
+  % Bibliographie
+  \bibliographystyle{apalike}
+  \bibliography{biblio}
+  
+  % Annexes
+  \appendix
+  \chapter{Données}
+    \lipsum[11-20]
+
+\end{document}
