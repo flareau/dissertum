@@ -92,7 +92,7 @@
   \begin{center}
     Université de Montréal\par\vfill
     {\Large\bf\@title}
-    \ifdefined\@subtitle{{\\\large\bf\@subtitle}}\fi\par\vfill
+    \ifdefined\@subtitle{\\\large\bf\@subtitle}\fi\par\vfill
     Par\\
     {\bf\@author}\par\vfill
     \@department, \@faculty\par\vfill
@@ -111,7 +111,7 @@
     \@department, \@faculty\\[-0.5ex]
     \rule{\linewidth}{1pt}\par\vfill
     {\it Ce\@f{tte} \@thesistype\ intitulé\@f{e}}\\
-    {\bf\@title\ifdefined\@subtitle{\\\@subtitle}}\par\vfill
+    {\bf\@title\ifdefined\@subtitle{\\\@subtitle}\fi}\par\vfill
     {\it Présenté\@f{e} par}\\
     {\bf\@author}\par\vfill
     {\it A été évalué\@f{e} par un jury composé des personnes suivantes}\\[\baselineskip]
