@@ -23,17 +23,6 @@
 
 \NeedsTeXFormat{LaTeX2e} \ProvidesClass{dissertum}[2023/02/01 Dissertation UdeM]
 
-% Packages
-\RequirePackage{setspace}
-\RequirePackage{times}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1,T2A,T2B,T2C,T3,T4,T5]{fontenc}
-\RequirePackage[english,main=french]{babel}
-\addto\captionsfrench{\renewcommand\listfigurename{Liste des figures}}
-\RequirePackage{fancyhdr}
-\RequirePackage{booktabs}
-
-
 % Type de dissertation (ma, phd)
 \newif\ifthesistypefem
 \DeclareOption{ma}{
@@ -53,6 +42,18 @@
 \ProcessOptions
 
 \LoadClass[12pt]{report}
+
+% Packages
+\RequirePackage{setspace}
+\RequirePackage{times}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1,T2A,T2B,T2C,T3,T4,T5]{fontenc}
+\RequirePackage{natbib} % charger AVANT babel!
+\RequirePackage[english,main=french]{babel}
+\addto\captionsfrench{\renewcommand\listfigurename{Liste des figures}}
+\RequirePackage{fancyhdr}
+\RequirePackage{booktabs}
+
 
 % Marges minimales: 25mm
 \RequirePackage[margin=30mm]{geometry}
@@ -92,7 +93,7 @@
   \begin{center}
     Université de Montréal\par\vfill
     {\Large\bf\@title}
-    \ifdefined\@subtitle{{\\\large\bf\@subtitle}}\fi\par\vfill
+    \ifdefined\@subtitle{\\\large\bf\@subtitle}\fi\par\vfill
     Par\\
     {\bf\@author}\par\vfill
     \@department, \@faculty\par\vfill
@@ -111,7 +112,7 @@
     \@department, \@faculty\\[-0.5ex]
     \rule{\linewidth}{1pt}\par\vfill
     {\it Ce\@f{tte} \@thesistype\ intitulé\@f{e}}\\
-    {\bf\@title\ifdefined\@subtitle{\\\@subtitle}}\par\vfill
+    {\bf\@title\ifdefined\@subtitle{\\\@subtitle}\fi}\par\vfill
     {\it Présenté\@f{e} par}\\
     {\bf\@author}\par\vfill
     {\it A été évalué\@f{e} par un jury composé des personnes suivantes}\\[\baselineskip]
@@ -173,25 +174,25 @@
 }
 
 
-
 % Bibliographie
-\def\thebibliography#1{\chapter*{\bibname\@mkboth
-  {\uppercase{\bibname}}{\uppercase{\bibname}}}%
-  \addcontentsline{toc}{chapter}{\bibname}%
-  \list
-  {\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
-    \leftmargin\labelwidth
-    \advance\leftmargin\labelsep
-    \usecounter{enumiv}%
-    \let\p@enumiv\@empty
-    \def\theenumiv{\arabic{enumiv}}}%
-    \def\newblock{\hskip .11em plus.33em minus.07em}%
-    \sloppy\clubpenalty4000\widowpenalty4000
-    \sfcode`\.=\@m}
+% \def\thebibliography#1{\chapter*{\bibname\@mkboth
+%   {\uppercase{\bibname}}{\uppercase{\bibname}}}%
+%   \addcontentsline{toc}{chapter}{\bibname}%
+%   \list
+%   {\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
+%     \leftmargin\labelwidth
+%     \advance\leftmargin\labelsep
+%     \usecounter{enumiv}%
+%     \let\p@enumiv\@empty
+%     \def\theenumiv{\arabic{enumiv}}}%
+%     \def\newblock{\hskip .11em plus.33em minus.07em}%
+%     \sloppy\clubpenalty4000\widowpenalty4000
+%     \sfcode`\.=\@m}
 
-\def\endthebibliography{%
-  \def\@noitemerr{\@warning{Empty `thebibliography' environment}}%
-  \endlist}
+% \def\endthebibliography{%
+%   \def\@noitemerr{\@warning{Empty `thebibliography' environment}}%
+%   \endlist}
+
 
 % En-têtes et pieds de pages
 % Première page de chapitre
