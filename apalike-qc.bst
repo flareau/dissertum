@@ -87,11 +87,11 @@ FUNCTION{fr.and}{				%% "et" entre les deux derniers auteurs
 }
 
 FUNCTION{fr.editeur}{		%% directeur d'ouvrage
-", r\'edacteur"
+", dir."
 }
 
 FUNCTION{fr.editeurs}{	%% directeurs d'ouvrage (pluriel)
-", r\'edacteurs"
+", dir."
 }
 
 FUNCTION{fr.et.al}{			%% et al.
@@ -99,7 +99,7 @@ FUNCTION{fr.et.al}{			%% et al.
 }
 
 FUNCTION{fr.in}{				%% Dans (revue/ouvrage)
-"\emph{In} "
+"Dans "
 }
 
 FUNCTION{fr.in.spc}{		%% " de " (série)
@@ -161,9 +161,9 @@ FUNCTION{fr.auteurs.style}{
 "\scshape"
 }
 
-FUNCTION{fr.ponctuation.apres.auteurs}{ %% Comme son nom l'indique...
+FUNCTION{fr.ponctuation.apres.auteurs}{ %% Ponctuation après direction d'ouvrage
 					%% Laisser vide pour un "."
-" : "
+", "
 }
 
 FUNCTION{fr.deuxpoints}{        %% Pour eviter l'espace avant les ":".
