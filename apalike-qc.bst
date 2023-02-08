@@ -147,7 +147,7 @@ FUNCTION{fr.tech.rep}{	%% rapport
 }
 
 FUNCTION{fr.master}{		%% mémoire
-"M\'emoire de ma\^itrise"
+"M\'emoire de ma\^{\i}trise"
 }
 
 FUNCTION{fr.phd}{				%% thèse

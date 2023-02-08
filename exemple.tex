@@ -1,6 +1,6 @@
 \documentclass[phd]{dissertum}
 \usepackage{lipsum}
-\usepackage[printonlyreused]{acronym}
+\usepackage[printonlyused]{acronym}
 
 
 % Variables à modifier
@@ -63,33 +63,33 @@
   % ==========================================================
 
   \chapter{Introduction}
-    On parle de la \ac{FAS} de l'\ac{UdeM} dans un document \LaTeX\ \citep{knuth84}.
+    Nous utilisons beaucoup d'acronymes à la \ac{FAS} de l'\ac{UdeM}, mais heureusement le package \texttt{acronym} nous permet de gérer ça de façon élégante et d'en générer la liste automatiquement.
 
-    \lipsum[3-6]
+    Dans cet ouvrage, nous allons citer des livres \citep{livre}, des chapitres de livres \citep{chapitre}, des articles de revues \citep{revue}, des articles publiés dans des actes de conférences \citep{actes} ou dans des ouvrages collectifs \citep{coll}, ainsi que des mémoires \citep{ma}, des thèses \citep{phd} et des rapports \citep{rapport}, en copiant sans vergogne des exemples tirés d'une page web qui appartient à \citet{web}.
 
   \chapter{Méthodologie, résultats et discussion}
-    \lipsum[7-8]
+    \lipsum[1]
     \section{Méthodologie}
-      \lipsum[9-10]
+      \lipsum[2]
     \section{Résultats}
-      \lipsum[11-12]
+      \lipsum[3]
       \subsection{Expérience 1}
-        \lipsum[13]
-        \begin{figure}
+        \lipsum[4]
+        \begin{figure}[tbh]
           \centering
-          \fbox{joli graphe}
+          \fbox{ici il y aura un joli graphe}
           \caption{Nombre d'articles publiés par domaine}
         \end{figure}
       \subsection{Expérience 2}
-        \lipsum[14]
-        \begin{figure}
+        \lipsum[5]
+        \begin{figure}[tbh]
           \centering
-          \fbox{joli graphe}
+          \fbox{et encore un joli graphe}
           \caption{Nombre d'articles publiés par année}
         \end{figure}
     \section{Discussion}
-      \lipsum[15-19]
-      \begin{table}
+      \lipsum[6]
+      \begin{table}[tbh]
         \centering
         \begin{tabular}{ll}
           \toprule
@@ -103,8 +103,7 @@
       \end{table}
 
   \chapter{Conclusion}
-    On parle encore de la \ac{FAS}.
-    \lipsum[7-10]
+    \lipsum[7]
 
   % ==========================================================
   
@@ -115,6 +114,6 @@
   % Annexes
   \appendix
   \chapter{Données}
-    \lipsum[11-20]
+    \lipsum[8-10]
 
 \end{document}

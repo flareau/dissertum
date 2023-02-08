@@ -53,7 +53,7 @@
 \addto\captionsfrench{\renewcommand\listfigurename{Liste des figures}}
 \RequirePackage{fancyhdr}
 \RequirePackage{booktabs}
-
+\RequirePackage[section]{placeins}
 
 % Marges minimales: 25mm
 \RequirePackage[margin=30mm]{geometry}
