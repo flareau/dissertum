@@ -51,6 +51,7 @@
 \RequirePackage{natbib} % charger AVANT babel!
 \RequirePackage[english,main=french]{babel}
 \addto\captionsfrench{\renewcommand\listfigurename{Liste des figures}}
+\addto\captionsfrench{\renewcommand{\tablename}{{\scshape Tableau}}}
 \RequirePackage{fancyhdr}
 \RequirePackage{booktabs}
 \RequirePackage[section]{placeins}
