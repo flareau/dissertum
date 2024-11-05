@@ -143,13 +143,13 @@
 }
 
 % Résumé et abstract
-\newsavebox{\@keywords}
+\newcommand{\@keywords}{}
 \newenvironment{resume}[1]
-  {\sbox{\@keywords}{#1}\prechapter{Résumé}}
-  {\paragraph{Mots-clés:} \usebox{\@keywords}}
+  {\renewcommand{\@keywords}{#1}\prechapter{Résumé}}
+  {\paragraph{Mots-clés:} \@keywords}
 \renewenvironment{abstract}[1]
-  {\begin{otherlanguage}{english}\sbox{\@keywords}{#1}\prechapter{Abstract}}
-  {\paragraph{Keywords:} \usebox{\@keywords}\end{otherlanguage}}
+  {\begin{otherlanguage}{english}\renewcommand{\@keywords}{#1}\prechapter{Abstract}}
+  {\paragraph{Keywords:} \@keywords\end{otherlanguage}}
 
 % Table des matières, liste des tableaux et liste des figures
 \long\def\matieres{
