@@ -176,6 +176,29 @@
 
 
 % Bibliographie
+\renewenvironment{thebibliography}[1]
+{
+  \chapter*{\bibname} % Afficher "Bibliographie" sans numéro de chapitre
+  \addcontentsline{toc}{chapter}{\bibname} % Ajouter à la table des matières
+  \list{}% Pas d'étiquette pour les entrées
+  {
+    \leftmargin2em  % Ajuster les marges si nécessaire
+    \labelwidth0pt  % Aucun espace pour les étiquettes
+    \itemindent-\leftmargin
+  }
+  \sloppy
+  \clubpenalty4000
+  \@clubpenalty\clubpenalty
+  \widowpenalty4000%
+  \sfcode`\.\@m
+}
+{
+  \def\@noitemerr
+  {\@latex@warning{Empty `thebibliography' environment}}%
+  \endlist
+}
+
+
 % \def\thebibliography#1{\chapter*{\bibname\@mkboth
 %   {\uppercase{\bibname}}{\uppercase{\bibname}}}%
 %   \addcontentsline{toc}{chapter}{\bibname}%
