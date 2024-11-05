@@ -95,7 +95,7 @@ FUNCTION{fr.editeurs}{	%% directeurs d'ouvrage (pluriel)
 }
 
 FUNCTION{fr.et.al}{			%% et al.
-" \emph{et~al.}"
+" et~al."
 }
 
 FUNCTION{fr.in}{				%% Dans (revue/ouvrage)
