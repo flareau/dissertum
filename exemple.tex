@@ -1,6 +1,7 @@
 \documentclass[phd]{dissertum}
 \usepackage{lipsum}
 \usepackage[printonlyused]{acronym}
+\usepackage{listings}
 
 
 % Variables à modifier
@@ -75,6 +76,11 @@
       \lipsum[3]
       \subsection{Expérience 1}
         \lipsum[4]
+        \begin{lstlisting}[language=Python, caption=Script très long à exécuter, label=lst:fonction]
+          def f(x):
+            return f(x) + 1
+          print(f(0))
+        \end{lstlisting}
         \begin{figure}[tbh]
           \centering
           \fbox{ici il y aura un joli graphe}
@@ -95,8 +101,8 @@
           \toprule
           \bf Nom & \bf Citations \\
           \midrule
-          Etal & 2\,340\,285 \\
-          Aparaître & 270\,859 \\ 
+          \emph{Et al.} & 2\,340\,285 \\
+          \emph{Ibid.} & 270\,859 \\ 
           \bottomrule
         \end{tabular}
         \caption{Les personnes les plus citées}

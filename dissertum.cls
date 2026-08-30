@@ -52,6 +52,14 @@
 \RequirePackage[english,main=french]{babel}
 \addto\captionsfrench{\renewcommand\listfigurename{Liste des figures}}
 \addto\captionsfrench{\renewcommand{\tablename}{{\scshape Tableau}}}
+\AtBeginDocument{%
+  \ifdefined\lstlistingname
+    \renewcommand\lstlistingname{Bloc de code}%
+  \fi
+  \ifdefined\lstlistlistingname
+    \renewcommand\lstlistlistingname{Liste des blocs de code}%
+  \fi
+}
 \RequirePackage{fancyhdr}
 \RequirePackage{booktabs}
 \RequirePackage[section]{placeins}
@@ -161,6 +169,11 @@
   
   \addcontentsline{toc}{chapter}{\listfigurename}
   \listoffigures
+
+  \ifdefined\lstlistoflistings
+    \addcontentsline{toc}{chapter}{\lstlistlistingname}
+    \lstlistoflistings
+  \fi
 }
 
 
