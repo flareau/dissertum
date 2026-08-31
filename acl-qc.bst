@@ -1,7 +1,7 @@
 %%% Modification of BibTeX style file acl_natbib_nourl.bst
 %%% ... by urlbst, version 0.9.1 (marked with "% urlbst")
 %%% See <https://purl.org/nxg/dist/urlbst> and repository <https://heptapod.host/nxg/urlbst>
-%%% Modifications Copyright 2002–23, Norman Gray,
+%%% Modifications Copyright 2002--23, Norman Gray,
 %%% and distributed under the terms of the LPPL; see README for discussion.
 %%%
 %%% Added webpage entry type, and url and lastchecked fields.
@@ -122,13 +122,13 @@ FUNCTION {init.urlbst.variables}
   #0 'doiform :=	% 0=with href; 1=with \doi{}
 
   % String constants, which you _might_ want to tweak.
-  "online" 'onlinestring :=	% label that a resource is online
-  "[link]" 'linktextstring :=	% anonymous link text
+  "en ligne" 'onlinestring :=	% label that a resource is online
+  "[lien]" 'linktextstring :=	% anonymous link text
   "http://www.ncbi.nlm.nih.gov/pubmed/" 'pubmedurl :=	% prefix to make URL from PUBMED
   "https://doi.org/" 'doiurl :=	% prefix to make URL from DOI
   "doi:" 'doiprefix :=	% printed text to introduce DOI
   "https://arxiv.org/abs/" 'eprinturl :=	% prefix to make URL from eprint ref
-  "cited " 'citedstring :=	% label in "lastchecked" remark
+  "consult\'e le " 'citedstring :=	% label in "lastchecked" remark
   "arXiv:" 'eprintprefix :=	% text prefix printed before eprint ref
   "PMID:" 'pubmedprefix :=	% text prefix printed before PUBMED ref
   "URL: " 'urlintro :=	% text prefix before URL
@@ -395,31 +395,31 @@ FUNCTION {space.word}
  % Each function has a name bbl.xxx where xxx is the English word.
  % The language selected here is ENGLISH
 FUNCTION {bbl.and}
-{ "and"}
+{ "et"}
 
 FUNCTION {bbl.etal}
 { "et~al." }
 
 FUNCTION {bbl.editors}
-{ "editors" }
+{ "dir." }
 
 FUNCTION {bbl.editor}
-{ "editor" }
+{ "dir." }
 
 FUNCTION {bbl.edby}
-{ "edited by" }
+{ "dir. par" }
 
 FUNCTION {bbl.edition}
-{ "edition" }
+{ "\'{e}d." }
 
 FUNCTION {bbl.volume}
-{ "volume" }
+{ "vol." }
 
 FUNCTION {bbl.of}
-{ "of" }
+{ "de" }
 
 FUNCTION {bbl.number}
-{ "number" }
+{ "num." }
 
 FUNCTION {bbl.nr}
 { "no." }
@@ -428,46 +428,46 @@ FUNCTION {bbl.in}
 { "in" }
 
 FUNCTION {bbl.pages}
-{ "pages" }
+{ "pp." }
 
 FUNCTION {bbl.page}
-{ "page" }
+{ "p." }
 
 FUNCTION {bbl.chapter}
-{ "chapter" }
+{ "ch." }
 
 FUNCTION {bbl.techrep}
-{ "Technical Report" }
+{ "Rapport technique" }
 
 FUNCTION {bbl.mthesis}
-{ "Master's thesis" }
+{ "M\'emoire de ma\^{\i}trise" }
 
 FUNCTION {bbl.phdthesis}
-{ "Ph.D. thesis" }
+{ "Th\`ese de doctorat" }
 
-MACRO {jan} {"January"}
+MACRO {jan} {"janvier"}
 
-MACRO {feb} {"February"}
+MACRO {feb} {"f\'{e}vrier"}
 
-MACRO {mar} {"March"}
+MACRO {mar} {"mars"}
 
-MACRO {apr} {"April"}
+MACRO {apr} {"avril"}
 
-MACRO {may} {"May"}
+MACRO {may} {"mai"}
 
-MACRO {jun} {"June"}
+MACRO {jun} {"juin"}
 
-MACRO {jul} {"July"}
+MACRO {jul} {"juillet"}
 
-MACRO {aug} {"August"}
+MACRO {aug} {"ao\^{u}t"}
 
-MACRO {sep} {"September"}
+MACRO {sep} {"septembre"}
 
-MACRO {oct} {"October"}
+MACRO {oct} {"octobre"}
 
-MACRO {nov} {"November"}
+MACRO {nov} {"novembre"}
 
-MACRO {dec} {"December"}
+MACRO {dec} {"d\'{e}cembre"}
 
 MACRO {acmcs} {"ACM Computing Surveys"}
 
@@ -603,7 +603,7 @@ FUNCTION {format.names}
 		    {
 		      % Author list was truncated (>20 authors): report the
 		      % number of remaining authors that were dropped.
-		      " and " * numnames nameptr - #1 + int.to.str$ * " others" *
+		      " et " * numnames nameptr - #1 + int.to.str$ * " autres" *
 		    }
 		    {
                       bbl.and
@@ -1125,7 +1125,7 @@ FUNCTION {output.eprint} % this is only used with the @misc record type (common 
   eprint empty$
     {% if eprint field is empty
       publisher field.or.null "arXiv" = % field.or.null here helps when no publisher field in the record
-        { publisher " preprint" * } % add " preprint" to publisher with the idea that publisher is the name of the preprint server
+        { publisher " pr\'epublication" * } % add " preprint" to publisher with the idea that publisher is the name of the preprint server
         { "" } % if publisher != "arXiv" then empty output
       if$
       emphasize % no output function after emphasize because nothing goes after this
@@ -1135,7 +1135,7 @@ FUNCTION {output.eprint} % this is only used with the @misc record type (common 
         { "" } % not using 'skip$ to reduce errors like "nothing to pop from stack"
         {% if archiveprefix or eprinttype fields are not empty
           journal empty$
-            { "Preprint" } % if journal field is empty: output just "Preprint" emphasized like a journal name
+            { "Pr\'epublication" } % if journal field is empty: output just "Preprint" emphasized like a journal name
             { journal } % if journal field is not empty, output it (takes precedence)
           if$
           emphasize output % emphasize what we formed before, setting output as a border to the subblock that follows with the comma delimiter
