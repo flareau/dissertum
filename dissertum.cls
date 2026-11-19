@@ -41,10 +41,12 @@
 \ExecuteOptions{ma} % valeur par défaut
 \ProcessOptions
 
-\LoadClass[12pt]{report}
+\LoadClass[12pt,letterpaper]{report}
 
 % Packages
 \RequirePackage{setspace}
+\RequirePackage{etoolbox}
+\RequirePackage[skip=1em,indent=0pt,tocskip=0pt]{parskip}
 \RequirePackage{iftex}
 \ifPDFTeX
   \RequirePackage{times}
@@ -72,14 +74,33 @@
 \RequirePackage{booktabs}
 \RequirePackage[section]{placeins}
 
-% Marges minimales: 25mm
-\RequirePackage[margin=30mm]{geometry}
+% Format lettre et marges minimales de 25mm
+\RequirePackage[letterpaper,margin=30mm]{geometry}
 
 % Éviter les sauts de page après un trait-d'union
 \brokenpenalty=10000
 
-%% Interligne 1,5
-\AtBeginDocument{\onehalfspacing}
+%% Interligne 1,5, paragraphes séparés par environ une ligne et sans alinéa
+\AtBeginDocument{%
+  \onehalfspacing
+  \setlength{\parskip}{\baselineskip}%
+}
+
+% Ne pas ajouter l'espacement des paragraphes à l'intérieur des titres de chapitre
+\patchcmd{\@makechapterhead}
+  {\parindent \z@}
+  {\parskip \z@ \parindent \z@}
+  {}
+  {\ClassWarning{dissertum}{Impossible d'ajuster l'espacement des chapitres}}
+\patchcmd{\@makeschapterhead}
+  {\parindent \z@}
+  {\parskip \z@ \parindent \z@}
+  {}
+  {\ClassWarning{dissertum}{Impossible d'ajuster l'espacement des chapitres non numerotes}}
+
+%% Citations longues en retrait et à interligne simple
+\AtBeginEnvironment{quote}{\singlespacing}
+\AtBeginEnvironment{quotation}{\singlespacing}
 
 %% Variables
 \def\titre#1{\title{#1}}
