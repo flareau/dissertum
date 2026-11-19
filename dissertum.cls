@@ -99,6 +99,15 @@
 % Format lettre et marges minimales de 25mm
 \RequirePackage[letterpaper,margin=30mm]{geometry}
 
+% Liens discrets et métadonnées du fichier PDF
+\RequirePackage[hidelinks,unicode]{hyperref}
+\AtBeginDocument{%
+  \hypersetup{%
+    pdftitle={\@title},%
+    pdfauthor={\@author}%
+  }%
+}
+
 % Éviter les sauts de page après un trait-d'union
 \brokenpenalty=10000
 

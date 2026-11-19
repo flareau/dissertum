@@ -6,7 +6,7 @@
 
 1. Téléchargez `dissertum.cls`, `exemple.tex` et `biblio.bib` dans un même dossier.
 2. Modifiez les métadonnées et le contenu de `exemple.tex`.
-3. Compilez le fichier d'exemple avec une installation LaTeX qui comprend notamment `babel` (français et anglais), `biblatex`, `biblatex-apa`, `biber`, `csquotes`, `setspace`, `parskip`, `etoolbox`, `xcolor`, `fancyhdr`, `geometry`, `booktabs`, `placeins`, `acronym`, `listings` et `lipsum`:
+3. Compilez le fichier d'exemple avec une installation LaTeX qui comprend notamment `babel` (français et anglais), `biblatex`, `biblatex-apa`, `biber`, `csquotes`, `setspace`, `parskip`, `etoolbox`, `xcolor`, `fancyhdr`, `geometry`, `hyperref`, `booktabs`, `placeins`, `acronym`, `listings` et `lipsum`:
 
 ```sh
 pdflatex exemple.tex
@@ -21,7 +21,7 @@ Le résultat est `exemple.pdf`. Les passes LaTeX supplémentaires mettent à jou
 
 Choisissez `\documentclass[ma]{dissertum}` pour un mémoire ou `\documentclass[phd]{dissertum}` pour une thèse. L'option `ma` est utilisée par défaut.
 
-Les commandes `\titre`, `\auteur`, `\date`, `\faculte`, `\departement` et `\programme` définissent la page de titre et sont toutes obligatoires. Lors de la création de `\pagetitre`, la classe signale dans le journal de compilation tout renseignement manquant. Si `\date` est omise, le mois et l'année de compilation sont utilisés comme valeurs de secours. Ajoutez ensuite les membres du jury avec les commandes correspondant à leur rôle:
+Les commandes `\titre`, `\auteur`, `\date`, `\faculte`, `\departement` et `\programme` définissent la page de titre et sont toutes obligatoires. Le titre et le nom de l'auteur ou de l'autrice sont aussi inscrits automatiquement dans les métadonnées du PDF. La classe charge elle-même `hyperref`; pour en modifier les réglages, utilisez `\hypersetup` plutôt que de charger de nouveau le paquet. Lors de la création de `\pagetitre`, la classe signale dans le journal de compilation tout renseignement manquant. Si `\date` est omise, le mois et l'année de compilation sont utilisés comme valeurs de secours. Ajoutez ensuite les membres du jury avec les commandes correspondant à leur rôle:
 
 | Commande | Rôle affiché | Mémoire | Thèse |
 | --- | --- | --- | --- |
