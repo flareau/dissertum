@@ -25,14 +25,23 @@
 
 % Type de dissertation (ma, phd)
 \newif\ifthesistypefem
+\newif\ifthesisphd
+\newif\ifdissertumtitledefined
+\newif\ifdissertumauthordefined
+\newif\ifdissertumdatedefined
+\newif\ifdissertumfacultydefined
+\newif\ifdissertumdepartmentdefined
+\newif\ifdissertumprogramdefined
 \DeclareOption{ma}{
   \def\@degree{maîtrise ès arts (M.A.)}
   \def\@thesistype{mémoire}
+  \thesisphdfalse
 }
 \DeclareOption{phd}{
   \def\@degree{doctorat (Ph.D.)}
   \def\@thesistype{thèse}
   \thesistypefemtrue
+  \thesisphdtrue
 }
 
 
@@ -47,6 +56,7 @@
 \RequirePackage{setspace}
 \RequirePackage{etoolbox}
 \RequirePackage[skip=1em,indent=0pt,tocskip=0pt]{parskip}
+\RequirePackage{xcolor}
 \RequirePackage{iftex}
 \ifPDFTeX
   \RequirePackage{times}
@@ -103,14 +113,17 @@
 \AtBeginEnvironment{quotation}{\singlespacing}
 
 %% Variables
+\newcommand{\placeholder}[1]{\textcolor{red}{\textless#1\textgreater}}
+\pretocmd{\title}{\dissertumtitledefinedtrue}{}{}
+\pretocmd{\author}{\dissertumauthordefinedtrue}{}{}
 \def\titre#1{\title{#1}}
 \def\soustitre#1{\gdef\@subtitle{#1}}
 \def\auteur#1{\author{#1}}
 \def\autrice#1{\author{#1}}
 \def\auteure#1{\author{#1}}
-\def\faculte#1{\gdef\@faculty{#1}}
-\def\departement#1{\gdef\@department{#1}}
-\def\programme#1{\gdef\@program{#1}}
+\def\faculte#1{\dissertumfacultydefinedtrue\gdef\@faculty{#1}}
+\def\departement#1{\dissertumdepartmentdefinedtrue\gdef\@department{#1}}
+\def\programme#1{\dissertumprogramdefinedtrue\gdef\@program{#1}}
 \def\president#1{\gdef\@president{#1}}
 \def\presidente#1{\gdef\@presidente{#1}}
 \def\directeur#1{\gdef\@directeur{#1}}
@@ -123,10 +136,80 @@
 \def\examinatrice#1{\gdef\@examinatrice{#1}}
 \def\membre#1{\gdef\@membre{#1}}
 \def\membredeux#1{\gdef\@membredeux{#1}}
-\def\date#1#2{\gdef\@month{#1}\gdef\@year{#2}}
+\def\date#1#2{\dissertumdatedefinedtrue\gdef\@month{#1}\gdef\@year{#2}}
+
+% Validation des renseignements de la page de titre
+\def\@validatetitlepage{%
+  \ifdissertumtitledefined\else
+    \ClassWarningNoLine{dissertum}{Titre obligatoire: utilisez \string\titre}%
+    \gdef\@title{\placeholder{TITRE}}%
+  \fi
+  \ifdissertumauthordefined\else
+    \ClassWarningNoLine{dissertum}{Auteur ou autrice obligatoire: utilisez \string\auteur, \string\autrice\space ou \string\auteure}%
+    \gdef\@author{\placeholder{AUTEUR\slash AUTRICE}}%
+  \fi
+  \ifdissertumdatedefined\else
+    \ClassWarningNoLine{dissertum}{Date obligatoire: le mois et l'année courants ont été insérés automatiquement; pour modifier, utilisez \string\date}%
+    \gdef\@month{%
+      \ifcase\month\or
+        Janvier\or Février\or Mars\or Avril\or Mai\or Juin\or
+        Juillet\or Août\or Septembre\or Octobre\or Novembre\or Décembre%
+      \fi
+    }%
+    \xdef\@year{\number\year}%
+  \fi
+  \ifdissertumdepartmentdefined\else
+    \ClassWarningNoLine{dissertum}{Departement obligatoire: utilisez \string\departement}%
+    \gdef\@department{\placeholder{DÉPARTEMENT}}%
+  \fi
+  \ifdissertumfacultydefined\else
+    \ClassWarningNoLine{dissertum}{Faculte obligatoire: utilisez \string\faculte}%
+    \gdef\@faculty{\placeholder{FACULTÉ}}%
+  \fi
+  \ifdissertumprogramdefined\else
+    \ClassWarningNoLine{dissertum}{Programme obligatoire: utilisez \string\programme}%
+    \gdef\@program{\placeholder{PROGRAMME}}%
+  \fi
+}
+
+% Validation de la composition du jury
+\def\@jurywarning#1{%
+  \ClassWarningNoLine{dissertum}{Composition du jury non conforme: #1}%
+}
+\def\@validatejury{%
+  \ifdefined\@president\else
+    \ifdefined\@presidente\else
+      \@jurywarning{President ou presidente obligatoire: utilisez \string\president ou \string\presidente}%
+    \fi
+  \fi
+  \ifdefined\@directeur\else
+    \ifdefined\@directrice\else
+      \@jurywarning{Directeur ou directrice obligatoire: utilisez \string\directeur ou \string\directrice}%
+    \fi
+  \fi
+  \ifdefined\@membre\else
+    \@jurywarning{Membre du jury obligatoire: utilisez \string\membre}%
+  \fi
+  \ifthesisphd
+    \ifdefined\@examinateur\else
+      \ifdefined\@examinatrice\else
+        \@jurywarning{Examinateur ou examinatrice externe obligatoire pour une these: utilisez \string\examinateur ou \string\examinatrice}%
+      \fi
+    \fi
+  \else
+    \ifdefined\@examinateur
+      \@jurywarning{Examinateur ou examinatrice externe interdit pour un memoire}%
+    \else
+      \ifdefined\@examinatrice
+        \@jurywarning{Examinateur ou examinatrice externe interdit pour un memoire}%
+      \fi
+    \fi
+  \fi
+}
 
 % Page titre
 \long\def\pagetitre{
+  \@validatetitlepage
   \thispagestyle{empty}
   \begin{center}
     Université de Montréal\par\vfill
@@ -144,6 +227,7 @@
 
 % Page d'idenfitication du jury
 \long\def\pagejury{
+  \@validatejury
   \thispagestyle{empty}
   \begin{center}
     Université de Montréal\\
