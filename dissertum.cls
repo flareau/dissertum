@@ -192,47 +192,12 @@
 }
 
 
-% Bibliographie
-\renewenvironment{thebibliography}[1]
-{
-  \chapter*{\bibname} % Afficher "Bibliographie" sans numéro de chapitre
-  \addcontentsline{toc}{chapter}{\bibname} % Ajouter à la table des matières
-  \list{}% Pas d'étiquette pour les entrées
-  {
-    \leftmargin2em  % Ajuster les marges si nécessaire
-    \labelwidth0pt  % Aucun espace pour les étiquettes
-    \itemindent-\leftmargin
-  }
-  \sloppy
-  \clubpenalty4000
-  \@clubpenalty\clubpenalty
-  \widowpenalty4000%
-  \sfcode`\.\@m
+% Bibliographie : utiliser les points de personnalisation de natbib
+\renewcommand{\bibsection}{%
+  \chapter*{\bibname}%
+  \addcontentsline{toc}{chapter}{\bibname}%
 }
-{
-  \def\@noitemerr
-  {\@latex@warning{Empty `thebibliography' environment}}%
-  \endlist
-}
-
-
-% \def\thebibliography#1{\chapter*{\bibname\@mkboth
-%   {\uppercase{\bibname}}{\uppercase{\bibname}}}%
-%   \addcontentsline{toc}{chapter}{\bibname}%
-%   \list
-%   {\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
-%     \leftmargin\labelwidth
-%     \advance\leftmargin\labelsep
-%     \usecounter{enumiv}%
-%     \let\p@enumiv\@empty
-%     \def\theenumiv{\arabic{enumiv}}}%
-%     \def\newblock{\hskip .11em plus.33em minus.07em}%
-%     \sloppy\clubpenalty4000\widowpenalty4000
-%     \sfcode`\.=\@m}
-
-% \def\endthebibliography{%
-%   \def\@noitemerr{\@warning{Empty `thebibliography' environment}}%
-%   \endlist}
+\setlength{\bibhang}{2em}
 
 
 % En-têtes et pieds de pages
