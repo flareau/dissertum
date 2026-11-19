@@ -2,7 +2,7 @@
 \usepackage{lipsum}
 \usepackage[printonlyused]{acronym}
 \usepackage{listings}
-\usepackage{url}
+\addbibresource{biblio.bib}
 
 
 % Variables à modifier
@@ -67,7 +67,7 @@
   \chapter{Introduction}
     Nous utilisons beaucoup d'acronymes à la \ac{FAS} de l'\ac{UdeM}, mais heureusement le package \texttt{acronym} nous permet de gérer ça de façon élégante et d'en générer la liste automatiquement.
 
-    Dans cet ouvrage, nous allons citer des livres \citep{livre}, des chapitres de livres \citep{chapitre}, des articles de revues \citep{revue}, des articles publiés dans des actes de conférences \citep{actes} ou dans des ouvrages collectifs \citep{coll}, ainsi que des mémoires \citep{ma}, des thèses \citep{phd} et des rapports \citep{rapport}, en copiant sans vergogne des exemples tirés d'une page web qui appartient à \citet{web}.
+    Dans cet ouvrage, nous allons citer des livres \parencite{livre}, des chapitres de livres \parencite{chapitre}, des articles de revues \parencite{revue}, des articles publiés dans des actes de conférences \parencite{actes} ou dans des ouvrages collectifs \parencite{coll}, ainsi que des mémoires \parencite{ma}, des thèses \parencite{phd} et des rapports \parencite{rapport}, en copiant sans vergogne des exemples tirés d'une page web qui appartient à \textcite{web}.
 
   \chapter{Méthodologie, résultats et discussion}
     \lipsum[1]
@@ -115,8 +115,7 @@
   % ==========================================================
   
   % Bibliographie
-  \bibliographystyle{acl-qc}
-  \bibliography{biblio}
+  \printbibliography[heading=bibintoc]
   
   % Annexes
   \appendix

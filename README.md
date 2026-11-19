@@ -4,13 +4,13 @@
 
 ## Démarrer
 
-1. Téléchargez `dissertum.cls`, `exemple.tex`, `biblio.bib` et `acl-qc.bst` dans un même dossier.
+1. Téléchargez `dissertum.cls`, `exemple.tex` et `biblio.bib` dans un même dossier.
 2. Modifiez les renseignements personnels et le contenu de `exemple.tex`.
-3. Compilez le fichier d'exemple avec une installation LaTeX qui comprend notamment `babel` (français et anglais), `natbib`, `setspace`, `parskip`, `etoolbox`, `xcolor`, `fancyhdr`, `geometry`, `booktabs`, `placeins`, `acronym`, `listings` et `lipsum`:
+3. Compilez le fichier d'exemple avec une installation LaTeX qui comprend notamment `babel` (français et anglais), `biblatex`, `biblatex-apa`, `biber`, `csquotes`, `setspace`, `parskip`, `etoolbox`, `xcolor`, `fancyhdr`, `geometry`, `booktabs`, `placeins`, `acronym`, `listings` et `lipsum`:
 
 ```sh
 pdflatex exemple.tex
-bibtex exemple
+biber exemple
 pdflatex exemple.tex
 pdflatex exemple.tex
 ```
@@ -37,7 +37,11 @@ Seules les personnes déclarées sont affichées sur la page du jury. Lors de la
 
 `\pagetitre` et `\pagejury` produisent les pages liminaires; `\matieres` produit la table des matières et les listes. L'exemple montre aussi les résumés, les chapitres, la bibliographie et les annexes.
 
-Pour employer `apalike-qc.bst`, placez également ce fichier dans le dossier et remplacez `\bibliographystyle{acl-qc}` par `\bibliographystyle{apalike-qc}`.
+## Citations et bibliographie
+
+La classe utilise le style APA 7 fourni par `biblatex-apa`. Déclarez le fichier bibliographique dans le préambule avec `\addbibresource{biblio.bib}`, utilisez `\parencite` pour une citation entre parenthèses et `\textcite` pour une citation intégrée à la phrase, puis insérez la bibliographie avec `\printbibliography[heading=bibintoc]`.
+
+Pour conserver temporairement les anciennes commandes `\citep` et `\citet` d'un document fondé sur `natbib`, une ligne commentée dans `dissertum.cls` montre comment activer l'option de compatibilité `natbib=true` de `biblatex`.
 
 ## Alternatives
 

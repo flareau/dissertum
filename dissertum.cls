@@ -68,8 +68,20 @@
     {\setmainfont{TeX Gyre Termes}}
     {\setmainfont{Latin Modern Roman}}
 \fi
-\RequirePackage{natbib} % charger AVANT babel!
 \RequirePackage[english,main=french]{babel}
+\RequirePackage{csquotes}
+\RequirePackage[backend=biber,style=apa]{biblatex}
+% Pour conserver \citep et \citet dans un document existant, remplacer la
+% ligne précédente par la suivante:
+% \RequirePackage[backend=biber,style=apa,natbib=true]{biblatex}
+\DefineBibliographyExtras{french}{%
+  \protected\def\mkbibnamefamily#1{\textnohyphenation{#1}}%
+}
+% Terminologie universitaire québécoise
+\DefineBibliographyStrings{french}{%
+  mathesis = {mémoire de maîtrise},%
+  phdthesis = {thèse de doctorat},%
+}
 \addto\captionsfrench{\renewcommand\listfigurename{Liste des figures}}
 \addto\captionsfrench{\renewcommand{\tablename}{{\scshape Tableau}}}
 \AtBeginDocument{%
@@ -303,14 +315,6 @@
   \vfill\vfill
   \newpage
 }
-
-
-% Bibliographie : utiliser les points de personnalisation de natbib
-\renewcommand{\bibsection}{%
-  \chapter*{\bibname}%
-  \addcontentsline{toc}{chapter}{\bibname}%
-}
-\setlength{\bibhang}{2em}
 
 
 % En-têtes et pieds de pages
