@@ -237,6 +237,7 @@
   \renewcommand{\headrulewidth}{0pt}
   \fancyhead{}
   \fancyfoot{}
+  \fancyfoot[C]{\thepage}
 }
 
 % Pages normales
