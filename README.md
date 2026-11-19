@@ -5,7 +5,7 @@
 ## Démarrer
 
 1. Téléchargez `dissertum.cls`, `exemple.tex` et `biblio.bib` dans un même dossier.
-2. Modifiez les renseignements personnels et le contenu de `exemple.tex`.
+2. Modifiez les métadonnées et le contenu de `exemple.tex`.
 3. Compilez le fichier d'exemple avec une installation LaTeX qui comprend notamment `babel` (français et anglais), `biblatex`, `biblatex-apa`, `biber`, `csquotes`, `setspace`, `parskip`, `etoolbox`, `xcolor`, `fancyhdr`, `geometry`, `booktabs`, `placeins`, `acronym`, `listings` et `lipsum`:
 
 ```sh
@@ -41,7 +41,19 @@ Seules les personnes déclarées sont affichées sur la page du jury. Lors de la
 
 La classe utilise le style APA 7 fourni par `biblatex-apa`. Déclarez le fichier bibliographique dans le préambule avec `\addbibresource{biblio.bib}`, utilisez `\parencite` pour une citation entre parenthèses et `\textcite` pour une citation intégrée à la phrase, puis insérez la bibliographie avec `\printbibliography[heading=bibintoc]`.
 
-Pour conserver temporairement les anciennes commandes `\citep` et `\citet` d'un document fondé sur `natbib`, une ligne commentée dans `dissertum.cls` montre comment activer l'option de compatibilité `natbib=true` de `biblatex`.
+Pour conserver les anciennes commandes `\citep` et `\citet` d'un document fondé sur `natbib`, remplacez la ligne 73 de `dissertum.cls`:
+
+```latex
+\RequirePackage[backend=biber,style=apa]{biblatex}
+```
+
+par la commande commentée à la ligne 76:
+
+```latex
+\RequirePackage[backend=biber,style=apa,natbib=true]{biblatex}
+```
+
+Il n'est pas nécessaire de charger séparément le paquet `natbib`.
 
 ## Alternatives
 
