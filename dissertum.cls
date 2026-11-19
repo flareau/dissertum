@@ -45,9 +45,17 @@
 
 % Packages
 \RequirePackage{setspace}
-\RequirePackage{times}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1,T2A,T2B,T2C,T3,T4,T5]{fontenc}
+\RequirePackage{iftex}
+\ifPDFTeX
+  \RequirePackage{times}
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[T3,T1]{fontenc}
+\else
+  \RequirePackage{fontspec}
+  \IfFontExistsTF{TeX Gyre Termes}
+    {\setmainfont{TeX Gyre Termes}}
+    {\setmainfont{Latin Modern Roman}}
+\fi
 \RequirePackage{natbib} % charger AVANT babel!
 \RequirePackage[english,main=french]{babel}
 \addto\captionsfrench{\renewcommand\listfigurename{Liste des figures}}
