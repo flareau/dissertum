@@ -49,7 +49,7 @@
 \ifPDFTeX
   \RequirePackage{times}
   \RequirePackage[utf8]{inputenc}
-  \RequirePackage[T2A,T2B,T2C,T3,T4,T5,T1]{fontenc}
+  \RequirePackage[T3,T1]{fontenc}
 \else
   \RequirePackage{fontspec}
   \IfFontExistsTF{TeX Gyre Termes}
