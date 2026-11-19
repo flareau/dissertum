@@ -1,12 +1,12 @@
 # dissertum
 
-`dissertum.cls` est une classe LaTeX pour les mémoires et les thèses de l'Université de Montréal. Elle s'appuie sur le [Guide des mémoires et des thèses](https://esp.umontreal.ca/fileadmin/esp/documents/Cheminement/GuidePresentationMemoiresTheses.pdf). Vérifiez les exigences en vigueur avant le dépôt de votre document.
+`dissertum.cls` est une classe LaTeX pour les mémoires et les thèses de l'Université de Montréal. Elle s'appuie sur le [Guide des mémoires et des thèses](https://esp.umontreal.ca/fileadmin/esp/documents/Cheminement/GuidePresentationMemoiresTheses.pdf).
 
 ## Démarrer
 
 1. Téléchargez `dissertum.cls`, `exemple.tex`, `biblio.bib` et `acl-qc.bst` dans un même dossier.
 2. Modifiez les renseignements personnels et le contenu de `exemple.tex`.
-3. Compilez le fichier d'exemple avec une installation LaTeX qui comprend notamment `babel` (français et anglais), `natbib`, `setspace`, `fancyhdr`, `geometry`, `booktabs`, `placeins`, `acronym`, `listings` et `lipsum` :
+3. Compilez le fichier d'exemple avec une installation LaTeX qui comprend notamment `babel` (français et anglais), `natbib`, `setspace`, `fancyhdr`, `geometry`, `booktabs`, `placeins`, `acronym`, `listings` et `lipsum`:
 
 ```sh
 pdflatex exemple.tex
@@ -25,4 +25,4 @@ Les commandes `\titre`, `\auteur`, `\date`, `\faculte`, `\departement` et `\prog
 
 Pour employer `apalike-qc.bst`, placez également ce fichier dans le dossier et remplacez `\bibliographystyle{acl-qc}` par `\bibliographystyle{apalike-qc}`.
 
-Le [Département de mathématiques et de statistique](https://dms.umontreal.ca/wiki/index.php/LaTeX#M.C3.A9moires.2C_th.C3.A8ses_et_travaux) propose également un gabarit LaTeX.
+Le Département de mathématiques et de statistique a également créé un gabarit, disponible [ici](https://dms.umontreal.ca/wiki/index.php/LaTeX#M.C3.A9moires.2C_th.C3.A8ses_et_travaux), mais il n'est pas tout à fait adapté aux sciences humaines.
