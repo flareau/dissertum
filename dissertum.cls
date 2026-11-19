@@ -161,16 +161,20 @@
 
 % Table des matières, liste des tableaux et liste des figures
 \long\def\matieres{
+  \clearpage
   \addcontentsline{toc}{chapter}{\contentsname}
   \tableofcontents
   
+  \clearpage
   \addcontentsline{toc}{chapter}{\listtablename}
   \listoftables
   
+  \clearpage
   \addcontentsline{toc}{chapter}{\listfigurename}
   \listoffigures
 
   \ifdefined\lstlistoflistings
+    \clearpage
     \addcontentsline{toc}{chapter}{\lstlistlistingname}
     \lstlistoflistings
   \fi
